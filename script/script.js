@@ -17,7 +17,13 @@ function crearTarea (nombreTarea) {
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload();
 }
+function borrarTarea(posicion){
 
+  itemsArray=itemsArray.filter((tarea,i) => i !== posicion && tarea);
+
+  localStorage.setItem("items",JSON.stringify(itemsArray))
+  location.reload();
+} 
 function displayFooter() {
   let page = `      
      
@@ -62,6 +68,7 @@ function activateCheckboxListeners() {
     ch.addEventListener('click', () => {
       itemsArray[i].checked = ch.checked
       localStorage.setItem('items', JSON.stringify(itemsArray))
+      location.reload();
     })
   })
 }
@@ -73,6 +80,7 @@ function activateDeleteListeners() {
   deleteBtn.forEach((db, i) => {
     db.addEventListener('click', () => {
       //Llamar la función que elimina la tarea
+      borrarTarea(i);
     })
   })
 }
