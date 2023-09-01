@@ -2,8 +2,21 @@
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
 
- let itemsArray = localStorage.getItem("items") ?
+let itemsArray = localStorage.getItem("items") ?
  JSON.parse(localStorage.getItem('items')): []
+
+function crearTarea (nombreTarea) {
+  let objetoTarea={
+    thing:nombreTarea,
+    checked:false,
+    priority:"Alta",
+    category:"Casa",
+  };
+
+  itemsArray.push(objetoTarea)
+  localStorage.setItem("items",JSON.stringify(itemsArray))
+  location.reload();
+}
 
 function displayFooter() {
   let page = `      
@@ -37,6 +50,7 @@ document.querySelector('.new-todo').addEventListener('keyup', (event) => {
   ) {
     const item = document.querySelector('.new-todo')
     //Llamar la función que crea la tarea.**
+    crearTarea(item.value)
   }
 })
 // Codigo DOM #2
