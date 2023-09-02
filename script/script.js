@@ -17,6 +17,7 @@ function crearTarea (nombreTarea) {
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload();
 }
+
 function borrarTarea(posicion){
 
   itemsArray=itemsArray.filter((tarea,i) => i !== posicion && tarea);
@@ -24,6 +25,7 @@ function borrarTarea(posicion){
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload();
 } 
+
 function displayFooter() {
   let page = `      
      
@@ -107,6 +109,7 @@ function activateEditListeners() {
       categorySelects.value = itemsArray[i].category
     })
   })
+
   document.querySelectorAll("#priority").forEach((select,i)=>{
     select.addEventListener("change",(event)=>{
       itemsArray[i].priority=event.target.value;
@@ -114,6 +117,7 @@ function activateEditListeners() {
       location.reload();
     })
   })
+
   document.querySelectorAll("#category").forEach((select,i)=>{
     select.addEventListener("change",(event)=>{
       itemsArray[i].category=event.target.value;
@@ -249,4 +253,4 @@ function displayItems() {
 //Recordar llamar las funciones displayItems() y displayFooter() para mostrar
 //las tareas en pantalla
 displayItems(); 
-displayFooter()
+displayFooter();
