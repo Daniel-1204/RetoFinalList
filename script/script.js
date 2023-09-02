@@ -36,6 +36,12 @@ function countPend(){
 
   return contadorPendientes.length;
 }
+function borrarCompletados() {
+  const completedTasks = itemsArray.filter((item) => item.checked === false)
+
+  localStorage.setItem('items', JSON.stringify(completedTasks))
+  location.reload()
+}
 
 function displayFooter() {
   let page = `      
