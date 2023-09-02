@@ -42,6 +42,19 @@ function borrarCompletados() {
   localStorage.setItem('items', JSON.stringify(completedTasks))
   location.reload()
 }
+function tareasPendientes() {
+  const pendientes = document.querySelectorAll('.input-controller')
+  pendientes.forEach((element) => {
+    const check = element.querySelector('.toggle')
+    if (check.checked) {
+      element.style.display = 'none'
+    }
+    if (!check.checked) {
+      element.style.display = ''
+    }
+  })
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+}
 
 function displayFooter() {
   let page = `      
@@ -127,7 +140,7 @@ function activateEditListeners() {
     })
   })
 
-  document.querySelectorAll("#priority").forEach((select,i)=>{
+  const seleccionPendiente=document.querySelectorAll("#priority").forEach((select,i)=>{
     select.addEventListener("change",(event)=>{
       itemsArray[i].priority=event.target.value;
       localStorage.setItem("items",JSON.stringify(itemsArray));
@@ -135,7 +148,7 @@ function activateEditListeners() {
     })
   })
 
-  document.querySelectorAll("#category").forEach((select,i)=>{
+  const seleccionarCompletado=document.querySelectorAll("#category").forEach((select,i)=>{
     select.addEventListener("change",(event)=>{
       itemsArray[i].category=event.target.value;
       localStorage.setItem("items",JSON.stringify(itemsArray));
