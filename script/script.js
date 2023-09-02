@@ -43,6 +43,15 @@ function borrarCompletados() {
   location.reload()
 }
 
+function showAll() {
+  const all = document.querySelectorAll('.input-controller')
+  all.forEach((element) => {
+    const check = element.querySelector('.toggle')
+    element.style.display = ''
+  })
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+}
+
 function showPend() {
   const pendientes = document.querySelectorAll('.input-controller')
   pendientes.forEach((element) => {
