@@ -2,35 +2,12 @@
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  function actualizarTarea(tarea,posicion) {
   itemsArray[posicion].thing=tarea
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload()
 }
-=======
+
 let itemsArray = localStorage.getItem("items") ?
  JSON.parse(localStorage.getItem('items')): []
 
