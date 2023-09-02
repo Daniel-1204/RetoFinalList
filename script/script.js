@@ -2,7 +2,7 @@
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
 
- function actualizarTarea(tarea,posicion) {
+function actualizarTarea(tarea,posicion) {
   itemsArray[posicion].thing=tarea
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload()
@@ -31,6 +31,11 @@ function borrarTarea(posicion){
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload();
 } 
+function countPend(){
+  const contadorPendientes= itemsArray.filter((tarea)=>tarea.checked===false)
+
+  return contadorPendientes.length;
+}
 
 function displayFooter() {
   let page = `      
@@ -169,6 +174,7 @@ function activateCancelListeners() {
       updateController[i].style.display = 'none'
       inputs[i].disabled = true
       inputs[i].style.border = 'none'
+      location.reload();
     })
   })
 }
