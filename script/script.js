@@ -1,6 +1,34 @@
 /*TIPS: *No olvides utilizar el almacenamiento local (localStorage)
  para que las tareas queden guardadas en caso
  de que la aplicación se cierre.*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ function actualizarTarea(tarea,posicion) {
+  itemsArray[posicion].thing=tarea
+  localStorage.setItem("items",JSON.stringify(itemsArray))
+  location.reload()
+}
 function displayFooter() {
   let page = `      
      
@@ -89,6 +117,8 @@ function activateSaveListeners() {
   saveBtn.forEach((sB, i) => {
     sB.addEventListener('click', () => {
       // Llamar la función que guarda la actualización la tarea
+      actualizarTarea(inputs[i].value,i);
+      location.reload();
     })
   })
 }
