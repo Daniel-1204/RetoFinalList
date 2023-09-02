@@ -42,7 +42,8 @@ function borrarCompletados() {
   localStorage.setItem('items', JSON.stringify(completedTasks))
   location.reload()
 }
-function tareasPendientes() {
+
+function showPend() {
   const pendientes = document.querySelectorAll('.input-controller')
   pendientes.forEach((element) => {
     const check = element.querySelector('.toggle')
@@ -55,7 +56,19 @@ function tareasPendientes() {
   })
   localStorage.setItem('items', JSON.stringify(itemsArray))
 }
-
+function showComp() {
+  const completados = document.querySelectorAll('.input-controller')
+  completados.forEach((element) => {
+    const check = element.querySelector('.toggle')
+    if (!check.checked) {
+      element.style.display = 'none'
+    }
+    if (check.checked) {
+      element.style.display = ''
+    }
+  })
+  localStorage.setItem('items', JSON.stringify(itemsArray))
+}
 function displayFooter() {
   let page = `      
      
