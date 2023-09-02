@@ -24,11 +24,36 @@
 
 
 
+
  function actualizarTarea(tarea,posicion) {
   itemsArray[posicion].thing=tarea
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload()
 }
+=======
+let itemsArray = localStorage.getItem("items") ?
+ JSON.parse(localStorage.getItem('items')): []
+
+function crearTarea (nombreTarea) {
+  let objetoTarea={
+    thing:nombreTarea,
+    checked:false,
+    priority:"Alta",
+    category:"Casa",
+  };
+
+  itemsArray.push(objetoTarea)
+  localStorage.setItem("items",JSON.stringify(itemsArray))
+  location.reload();
+}
+function borrarTarea(posicion){
+
+  itemsArray=itemsArray.filter((tarea,i) => i !== posicion && tarea);
+
+  localStorage.setItem("items",JSON.stringify(itemsArray))
+  location.reload();
+} 
+
 function displayFooter() {
   let page = `      
      
@@ -54,11 +79,41 @@ function displayFooter() {
 }
 
 // Codigo DOM #1
-
+document.querySelector('.new-todo').addEventListener('keyup', (event) => {
+  if (
+    event.keyCode === 13 &&
+    document.querySelector('.new-todo').value.length > 0
+  ) {
+    const item = document.querySelector('.new-todo')
+    //Llamar la función que crea la tarea.**
+    crearTarea(item.value)
+  }
+})
 // Codigo DOM #2
+// este fragmento permite conservar el estado del checkbox (true o false) en el localStorage
 
+function activateCheckboxListeners() {
+  const checkboxes = document.querySelectorAll('.toggle')
+  checkboxes.forEach((ch, i) => {
+    ch.addEventListener('click', () => {
+      itemsArray[i].checked = ch.checked
+      localStorage.setItem('items', JSON.stringify(itemsArray))
+      location.reload();
+    })
+  })
+}
 // Codigo DOM #3
+// Permite que la acción eliminar impacte el DOM del HTML, acá debes agegar algoritmo de eliminar tarea
 
+function activateDeleteListeners() {
+  let deleteBtn = document.querySelectorAll('.deleteBtn')
+  deleteBtn.forEach((db, i) => {
+    db.addEventListener('click', () => {
+      //Llamar la función que elimina la tarea
+      borrarTarea(i);
+    })
+  })
+}
 // Codigo DOM #4
 // Permite que la acción editar de las 2 listas desplegables "prioridad" y "categoría" impacte el DOM del HTML cuando cambies de opción, inserta este código tal cual, el reto está en saber en qué parte de tu código debes usarlo.
 
