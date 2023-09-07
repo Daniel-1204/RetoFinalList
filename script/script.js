@@ -12,16 +12,20 @@ let itemsArray = localStorage.getItem("items") ?
  JSON.parse(localStorage.getItem('items')): []
 
 function crearTarea (nombreTarea) {
-  let objetoTarea={
-    thing:nombreTarea,
-    checked:false,
-    priority:"Alta",
-    category:"Casa",
-  };
-
-  itemsArray.unshift(objetoTarea)
-  localStorage.setItem("items",JSON.stringify(itemsArray))
-  location.reload();
+  if (nombreTarea !== " "){
+    let objetoTarea={
+      thing:nombreTarea,
+      checked:false,
+      priority:"Alta",
+      category:"Casa",
+    };
+  
+    itemsArray.unshift(objetoTarea)
+    localStorage.setItem("items",JSON.stringify(itemsArray))
+    location.reload();
+  }else{
+    alert("Ingresa una tarea 📋✏")
+  }
 }
 
 function borrarTarea(posicion){
