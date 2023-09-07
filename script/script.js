@@ -19,7 +19,7 @@ function crearTarea (nombreTarea) {
     category:"Casa",
   };
 
-  itemsArray.push(objetoTarea)
+  itemsArray.unshift(objetoTarea)
   localStorage.setItem("items",JSON.stringify(itemsArray))
   location.reload();
 }
