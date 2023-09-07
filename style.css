@@ -47,7 +47,7 @@ body {
 }
 
 .todoApp {
-  background: #fff;
+  background: #ffffff60;
   margin: 130px 0 40px 0;
   position: relative;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
@@ -79,7 +79,7 @@ body {
   font-size: 80px;
   font-weight: 200;
   text-align: center;
-  color: #c1cad6a1;
+  color: #ffffffc4;
   -webkit-text-rendering: optimizeLegibility;
   -moz-text-rendering: optimizeLegibility;
   text-rendering: optimizeLegibility;
@@ -390,8 +390,8 @@ textarea:focus {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
+  background-color: rgba(24 9 28 / 44%);
+  border-radius: 17px;
   padding: 8px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
 }
